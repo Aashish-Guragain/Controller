@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controller please 😗</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #6366f1;
+            --success-color: #22c55e;
+            --text-main: #fcfdff;
+            --bg-color: #f8fafc;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .video-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        .video-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card {
+            background-image: url("bgImg.jpg");
+            text-align: center;
+            padding: 2rem;
+            z-index: 10;
+            max-width: 600px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            min-height: 80px;
+            /* Prevents layout jump when text changes */
+        }
+
+        .button-container {
+            position: relative;
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
+            min-height: 100px;
+        }
+
+        .btn-yes {
+            background-color: var(--success-color);
+            color: white;
+            border: none;
+            padding: 1rem 2.5rem;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 12px;
+            cursor: pointer;
+            box-shadow: 0 10px 15px -3px rgba(34, 197, 94, 0.4);
+            transition: transform 0.2s;
+        }
+
+        .btn-yes:hover {
+            transform: scale(1.1);
+        }
+
+        .btn-no {
+            background-color: #ef4444;
+            color: white;
+            border: none;
+            padding: 1rem 2.5rem;
+            font-size: 1.2rem;
+            border-radius: 12px;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.15s ease-out;
+            z-index: 100;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s forwards;
+        }
+        .circularImg {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        footer {
+            position: absolute;
+            bottom: 20px;
+            font-size: 0.8rem;
+            color: #64748b;
+        }
+
+        #gift-overlay {
+            position: fixed;
+            inset: 0;
+            overflow: hidden;
+            z-index: 9999;
+            cursor: pointer;
+        }
+
+        .gift-video {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .gift-content {
+            position: relative;
+            z-index: 2;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(2px);
+        }
+
+        .gift-box {
+            font-size: 8rem;
+            animation: bounce 1.2s infinite;
+        }
+
+        #gift-overlay p {
+            margin-top: 20px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="gift-overlay">
+        <video autoplay muted loop playsinline class="gift-video">
+            <source src="./assets/heart-bg.mp4" type="video/mp4" />
+        </video>
+
+        <div class="gift-content">
+            <div class="gift-box">🎁</div>
+            <p>Tap the box</p>
+        </div>
+    </div>
+
+
+    <div class="video-container">
+        <video autoplay muted loop playsinline>
+            <source src="./assets/heart-bg.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+
+
+    <main class="card">
+        <div id="content-wrapper">
+            <h1 id="question-text">Do you love your brother?</h1>
+            <div class="button-container">
+                <button id="yesBtn" class="btn-yes" onclick="handleInteraction()">YES</button>
+                <button id="noBtn" class="btn-no">No</button>
+            </div>
+        </div>
+
+        <div id="final-section" class="hidden">
+            <img src="./assets/khuchki.jpg" alt="khushi.jpg" class="circularImg">
+            <h1 >Thankyou DD very very much 😁😁! 🎉</h1>
+            <p>Now for the controller (☞ﾟヮﾟ)☞. <a
+                    href="https://www.daraz.com.np/products/fantech-shooter-ii-gp13-gaming-controller-known-console-like-layout-with-18-mtrs-wire-i112431988-s1030425760.html?c=&channelLpJumpArgs=&clickTrackInfo=query%253Acontroller%253Bnid%253A112431988%253Bsrc%253ALazadaMainSrp%253Brn%253A73d5f64dd51d058a5315eb44a606ba7c%253Bregion%253Anp%253Bsku%253A112431988_NP%253Bprice%253A2324%253Bclient%253Adesktop%253Bsupplier_id%253A900153174089%253Bsession_id%253A%253Bbiz_source%253Ah5_external%253Bslot%253A13%253Butlog_bucket_id%253A470687%253Basc_category_id%253A10002918%253Bitem_id%253A112431988%253Bsku_id%253A1030425760%253Bshop_id%253A59263%253BtemplateInfo%253A&freeshipping=0&fs_ab=1&fuse_fs=&lang=en&location=Bagmati%20Province&price=2324&priceCompare=skuId%3A1030425760%3Bsource%3Alazada-search-voucher%3Bsn%3A73d5f64dd51d058a5315eb44a606ba7c%3BoriginPrice%3A232400%3BdisplayPrice%3A232400%3BsinglePromotionId%3A50000034846001%3BsingleToolCode%3ApromPrice%3BvoucherPricePlugin%3A0%3Btimestamp%3A1770385522367&ratingscore=4.647058823529412&request_id=73d5f64dd51d058a5315eb44a606ba7c&review=238&sale=0&search=1&source=search&spm=a2a0e.searchlist.list.13&stock=1"
+                    style="text-decoration: none;">click ME</a></p>
+
+            <button class="btn-yes" style="margin-top: 20px; font-size: 1rem;" onclick="location.reload()">Start
+                Over</button>
+        </div>
+    </main>
+
+    <footer>
+        To one and only pyari didi, <strong>KHUSHi💖</strong>.
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+
+    <!-- Audio element for no sound -->
+    <audio id="noSound" preload="auto">
+        <source src="./assets/string.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="yesSound" preload="auto">
+        <source src="./assets/yay.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        const noBtn = document.getElementById('noBtn');
+        const questionText = document.getElementById('question-text');
+        const contentWrapper = document.getElementById('content-wrapper');
+        const finalSection = document.getElementById('final-section');
+        const noSound = document.getElementById('noSound');
+        const yesSound = document.getElementById('yesSound');
+
+
+        let currentStep = 1;
+
+        // Function to generate celebration sound using Web Audio API
+        function playCelebrationSound() {
+            try {
+                const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                const now = audioContext.currentTime;
+
+                // Create multiple notes for a festive celebration sound
+                const notes = [
+                    { freq: 523.25, time: 0, duration: 0.1 },      // C5
+                    { freq: 659.25, time: 0.12, duration: 0.1 },   // E5
+                    { freq: 783.99, time: 0.24, duration: 0.1 },   // G5
+                    { freq: 1046.50, time: 0.36, duration: 0.2 },  // C6
+                    { freq: 783.99, time: 0.58, duration: 0.15 },  // G5
+                    { freq: 659.25, time: 0.75, duration: 0.15 },  // E5
+                    { freq: 783.99, time: 0.92, duration: 0.2 },   // G5
+                    { freq: 1046.50, time: 1.14, duration: 0.3 }   // C6
+                ];
+
+                notes.forEach(note => {
+                    const oscillator = audioContext.createOscillator();
+                    const gainNode = audioContext.createGain();
+
+                    oscillator.connect(gainNode);
+                    gainNode.connect(audioContext.destination);
+
+                    oscillator.frequency.value = note.freq;
+                    oscillator.type = 'sine';
+
+                    gainNode.gain.setValueAtTime(0.3, now + note.time);
+                    gainNode.gain.exponentialRampToValueAtTime(0.01, now + note.time + note.duration);
+
+                    oscillator.start(now + note.time);
+                    oscillator.stop(now + note.time + note.duration);
+                });
+            } catch (e) {
+                console.log('Could not play celebration sound:', e);
+            }
+        }
+
+        // The logic to make the "No" button fly away
+        function moveButton() {
+            const padding = 100;
+            const maxX = window.innerWidth - noBtn.offsetWidth - padding;
+            const maxY = window.innerHeight - noBtn.offsetHeight - padding;
+
+            const randomX = Math.max(padding, Math.floor(Math.random() * maxX));
+            const randomY = Math.max(padding, Math.floor(Math.random() * maxY));
+
+            noBtn.style.left = randomX + 'px';
+            noBtn.style.top = randomY + 'px';
+            noBtn.style.position = 'fixed';
+
+            // Play "no" sound
+            noSound.currentTime = 0;
+            noSound.play().catch(err => console.log('Could not play no sound:', err));
+        }
+
+        noBtn.addEventListener('mouseover', moveButton);
+        noBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            moveButton();
+        });
+
+        // Handles the "Yes" clicks for both questions
+        function handleInteraction() {
+            if (currentStep === 1) {
+                // Phase 1 Success
+                currentStep = 2;
+
+                // Play celebration sound
+                playCelebrationSound();
+
+                // Visual feedback
+                confetti({ particleCount: 50, spread: 50, origin: { y: 0.8 } });
+
+                // Update text with a fade effect
+                questionText.classList.remove('fade-in');
+                void questionText.offsetWidth; // Trigger reflow for animation
+                questionText.innerText = "Then, would you like to buy him a controller?";
+                questionText.classList.add('fade-in');
+
+                // Reset No button position to be near the new question initially
+                noBtn.style.position = 'absolute';
+                noBtn.style.top = 'auto';
+                noBtn.style.left = 'auto';
+
+            } else {
+                // Phase 2 Final Success
+                confetti({
+                    particleCount: 150,
+                    spread: 100,
+                    origin: { y: 0.6 }
+                });
+
+                // Play celebration sound for YES
+                yesSound.currentTime = 0;
+                yesSound.play().catch(err => console.log('Could not play no sound:', err))
+
+                contentWrapper.classList.add('hidden');
+                noBtn.classList.add('hidden');
+                finalSection.classList.remove('hidden');
+                finalSection.classList.add('fade-in');
+            }
+        }
+        const giftOverlay = document.getElementById('gift-overlay');
+
+        giftOverlay.addEventListener('click', () => {
+            // unlock audio
+            noSound.play().then(() => {
+                noSound.pause();
+                noSound.currentTime = 0;
+            }).catch(() => { });
+
+            yesSound.play().then(() => {
+                yesSound.pause();
+                yesSound.currentTime = 0;
+            }).catch(() => { });
+
+            giftOverlay.style.display = 'none';
+        });
+
+    </script>
+</body>
+
+</html>
